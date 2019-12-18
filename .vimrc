@@ -10,19 +10,10 @@ set backspace=indent,eol,start
 
 let g:indentLine_color_term = 239
 
-"set guitablabel=\[%N\]\ %M
-"filetype plugin on
-
 syntax on
 hi clear
 
-"autocmd ColorScheme janah highlight Normal ctermbg=235
-"colorscheme janah
 colorscheme spacegray
-
-"call plug#begin('~/.vim/plugged')
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"call plug#end()
 
 "Pathogen plugin manager
 execute pathogen#infect()
@@ -38,17 +29,6 @@ autocmd VimEnter *
             \ |   NERDTree
             \ |   wincmd w
             \ | endif
-
-
-
-function! Startup()
-    read ~/.vim/vim-logo
-endfun
-
-let g:Startscreen_function=function('Startup')
-"autocmd VimEnter * botright 10 split
-"autocmd VimEnter * ConqueTerm bash
-"autocmd VimEnter * wincmd p
 
 nnoremap <F1> :set paste!<CR>
 nnoremap <F2> :set number! \| NERDTreeToggle<CR> <C-w>w
@@ -80,8 +60,8 @@ nmap 9 9gt
 
 let g:airline_theme='murmur'
 
-"autocmd FileType java :TagbarToggle
-"autocmd FileType groovy :TagbarToggle
+autocmd FileType java :TagbarToggle
+autocmd FileType groovy :TagbarToggle
 
 let g:airline_powerline_fonts = 1
 
