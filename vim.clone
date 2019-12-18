@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Setting up Vim folders
+
+cd $VIM_HOME
+mkdir autoload/
+mkdir colors/
+mkdir bundle/
+mkdir language-servers/
+
+# Copy .vimrc to local user directory
+#cp .vimrc ~/
+
+# Setting up autoload folder
+cd $VIM_HOME/autoload/
+wget https://github.com/tpope/vim-pathogen/blob/master/autoload/pathogen.vim
+
+# Setting up colors
+cd $VIM_HOME/colors/
+wget https://github.com/ajh17/Spacegray.vim/blob/master/colors/spacegray.vim
+
+# Setting up bundle folder
+cd $VIM_HOME/bundle/
+
+#Auto-pairs
+git clone https://github.com/jiangmiao/auto-pairs.git
+
+#Coc.nvim
+git clone https://github.com/neoclide/coc.nvim.git #requires building with node.js
+./coc.nvim/install.sh
+vim -c "CocInstall coc-json" -c q
+vim -c "CocInstall coc-java" -c q
+
+cp coc-settings.json $VIM_HOME/.
+
+#Install language-servers
+pushd $VIM_HOME/language-servers/
+git clone https://github.com/prominic/groovy-language-server.git
+pushd groovy-language-server
+./gradlew build
+popd; popd
+
+#Conque-shell
+git clone https://github.com/vim-scripts/Conque-Shell.git
+
+#indentLine
+git clone https://github.com/Yggdroot/indentLine.git
+
+#nerdtree
+git clone https://github.com/scrooloose/nerdtree.git
+git clone https://github.com/jistr/vim-nerdtree-tabs.git
+git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git
+git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
+
+#tagbar
+git clone https://github.com/majutsushi/tagbar.git
+
+#airline
+git clone https://github.com/vim-airline/vim-airline.git
+git clone https://github.com/vim-airline/vim-airline-themes.git
+git clone https://github.com/enricobacis/vim-airline-clock.git
+
+#devicons
+git clone https://github.com/ryanoasis/vim-devicons.git
